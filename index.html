@@ -40,92 +40,98 @@
         />
         <div class="row row-cols-4 g-2 mt-1">
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">AC</button>
+            <button class="btn w-100 bg-white" onclick="c('0')">AC</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">+/-</button>
+            <button class="btn w-100 bg-white" onclick="d('=/--')">+/-</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">%</button>
+            <button class="btn w-100 bg-white" onclick="d('%')">%</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">/</button>
+            <button class="btn w-100 bg-white" onclick="d('/')">/</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">7</button>
+            <button class="btn w-100 bg-white" onclick="d('7')">7</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">8</button>
+            <button class="btn w-100 bg-white" onclick="d('8')">8</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">9</button>
+            <button class="btn w-100 bg-white" onclick="d('9')">9</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">x</button>
+            <button class="btn w-100 bg-white" onclick="d('x')">x</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">4</button>
+            <button class="btn w-100 bg-white" onclick="d('4')">4</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">5</button>
+            <button class="btn w-100 bg-white" onclick="d('5')">5</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">6</button>
+            <button class="btn w-100 bg-white" onclick="d('6')">6</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">-</button>
+            <button class="btn w-100 bg-white" onclick="d('-')">-</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">1</button>
+            <button class="btn w-100 bg-white" onclick="d('1')">1</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">2</button>
+            <button class="btn w-100 bg-white" onclick="d('2')">2</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">3</button>
+            <button class="btn w-100 bg-white" onclick="d('3')">3</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">+</button>
+            <button class="btn w-100 bg-white" onclick="d('+')">+</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="operator">c</button>
+            <button class="btn w-100 bg-white" onclick="c('0')">c</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">0</button>
+            <button class="btn w-100 bg-white" onclick="d('0')">0</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white">.</button>
+            <button class="btn w-100 bg-white" onclick="d('.')">.</button>
           </div>
           <div class="col">
-            <button class="btn w-100 bg-white" id="equal">=</button>
+            <button class="btn w-100 bg-white" onclick="d()">=</button>
           </div>
         </div>
       </div>
     </main>
 
     <script>
-      let input = document.getElementById('inputDisplay');
-      let button = document.querySelectorAll('button');
+      var d = document.getElementById('inputDisplay');
 
-      let string = '';
-      let arr = Array.from(button);
-      arr.forEach((button) => {
-        button.addEventListener('click', (e) => {
-          if (e.target.innerHTML == '=') {
-            string = eval(string);
-            input.value = string;
-          } else if (e.target.innerHTML == 'AC') {
-            string = '';
-            input.value = string;
-          } else if (e.target.innerHTML == 'c') {
-            string = '';
-            input.value = string;
-          }
+      function d(y) {
+        if (d.value == '0') {
+          d.value = y;
+        } else {
+          d.value += y;
+        }
+      }
 
-          string += e.target.innerHTML;
-          input.value = string;
-        });
-      });
+      function c() {
+        d.value = '';
+        r();
+      }
+
+      function hs() {
+        d.value = d.value.substr(0, d.value.length - 1);
+      }
+
+      function h() {
+        d.value = eval(d.value);
+      }
+
+      function r() {
+        if (d.value == '') {
+          d.value = '0';
+        }
+      }
     </script>
 
     <script
